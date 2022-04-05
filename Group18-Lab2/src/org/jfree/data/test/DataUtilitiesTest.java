@@ -17,6 +17,7 @@ public class DataUtilitiesTest extends TestCase {
 
 	private Values2D posValues2D;
 	private Values2D negValues2D;
+	private Values2D empValues2D;
 
 	private double[] posArrayDoubleValues;
 	private double[] posArrayDoubleFalseValues;
@@ -77,6 +78,8 @@ public class DataUtilitiesTest extends TestCase {
 		negTestDefaultKeyedValues.addValue("2", -2);
 
 		negTestKeyedValues = negTestDefaultKeyedValues;
+		
+		empValues2D = null;
 	}
 
 	@After
@@ -111,7 +114,13 @@ public class DataUtilitiesTest extends TestCase {
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(InvalidParameterException.class));
 		}
 	}
-
+	
+	@Test
+	public void testEmptyDataAndColumnTotalTrue() {
+		assertEquals("Wrong sum returned. It should be null", null, DataUtilities.calculateColumnTotal(empValues2D, 0));
+	}
+	
+	
 	// Checks number of positive or negative values added together in column 0. total to 5 or return assert message
 	@Test
 	public void testValidDataAndColumnTotalTrue() {
@@ -142,6 +151,11 @@ public class DataUtilitiesTest extends TestCase {
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(InvalidParameterException.class));
 		}
 	}
+	
+	@Test
+	public void testEmptyDataAndRowTotal() {
+		assertEquals("Wrong sum returned. It should be null", null, DataUtilities.calculateRowTotal(empValues2D, 0));
+	}
 
 	// Checks number of positive or negative values added together in row 0. total to 1 or return assert message
 	@Test
@@ -171,6 +185,12 @@ public class DataUtilitiesTest extends TestCase {
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(InvalidParameterException.class));
 		}
 	}
+	
+	@Test
+	public void testEmptyNumberArrayData() {
+		assertTrue(true);
+	}
+	
 
 	// checks values within created number array are the same as the data values provided
 	@Test
@@ -211,6 +231,11 @@ public class DataUtilitiesTest extends TestCase {
 
 			assertTrue("Incorrect exception type thrown", e.getClass().equals(InvalidParameterException.class));
 		}
+	}
+	
+	@Test
+	public void testEmptyNumberArrayData2D() {
+		assertTrue(true);
 	}
 
 	// checks values within created 2D number array are the same as the data values provided
