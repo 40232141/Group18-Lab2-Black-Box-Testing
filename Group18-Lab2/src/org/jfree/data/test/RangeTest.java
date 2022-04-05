@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.security.InvalidParameterException;
+
+import org.jfree.data.DataUtilities;
 import org.jfree.data.Range;
 import junit.framework.TestCase;
 
@@ -59,13 +62,6 @@ public class RangeTest extends TestCase {
 		assertFalse("This value should be above the range and therefore not contained by the range", 
 				rangeObjectForContainsAndConstrainTest.contains(100));
 	}
-	
-	//revise
-	//@Test
-	//public void testContainsPassInNull() {
-		//assertFalse("This value should be below the range and therefore not contained by the range", 
-				//rangeObjectForContainsAndConstrainTest.contains(-100));
-	//}
 	
 	//getUpperBound tests
 	@Test
